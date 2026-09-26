@@ -1,0 +1,52 @@
+{
+  "groups": [
+    {
+      "group": "Languages",
+      "items": [
+        "Python",
+        "TypeScript",
+        "JavaScript",
+        "C/C++",
+        "Java",
+        "HTML/CSS"
+      ]
+    },
+    {
+      "group": "Frameworks",
+      "items": [
+        "React",
+        "FastAPI",
+        "Node.js",
+        "Express",
+        "Prisma",
+        "Tailwind",
+        "Auth0"
+      ]
+    },
+    {
+      "group": "Systems & cloud",
+      "items": [
+        "Linux",
+        "Docker",
+        "Kubernetes (K3s)",
+        "WireGuard",
+        "AWS EC2",
+        "CI/CD",
+        "Git"
+      ]
+    },
+    {
+      "group": "Data & AI",
+      "items": [
+        "PostgreSQL",
+        "Supabase",
+        "Pinecone",
+        "LangChain",
+        "Groq",
+        "LLM APIs",
+        "RAG pipelines",
+        "Embeddings & vector search"
+      ]
+    }
+  ]
+}

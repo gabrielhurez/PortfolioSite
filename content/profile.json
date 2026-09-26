@@ -1,0 +1,15 @@
+{
+  "firstName": "Gabriel",
+  "lastName": "Hurez-Soler",
+  "role": "Software Engineer",
+  "heroLine": "I'm a junior studying computer science at WPI, looking for software engineering internships for summer 2027.",
+  "facts": [
+    "CS @ WPI, class of 2028",
+    "Worcester, MA"
+  ],
+  "email": "gsoler@wpi.edu",
+  "github": "https://github.com/gabrielhurez",
+  "linkedin": "https://linkedin.com/in/gabrielhurez",
+  "resume": "/files/gabriel-hurez-soler-resume.pdf",
+  "about": "Hi, I'm Gabriel.\n\nThis past summer I was an AI Integration intern at Gratinsta. Lately, outside of classes, I've been working on my home lab and a Raspberry Pi cluster that hosts my own services.\n\nWhen I'm not working on these, I'm usually outdoors, backpacking and hiking, or skiing in the winter. I also love learning languages (German at the moment) and recently began learning guitar."
+}

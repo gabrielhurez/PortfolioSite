@@ -1,0 +1,34 @@
+{
+  "items": [
+    {
+      "title": "AI Integration Intern",
+      "org": "Gratinsta",
+      "place": "Somerville, MA",
+      "dates": "Jul – Aug 2026",
+      "points": [
+        "Built an internal platform hosting twelve business tools behind one login, with Google OAuth and role-based permissions.",
+        "Built a prospecting tool that merges map geocoding with AI web search to find retail leads missing from map data.",
+        "Integrated the Claude API across the platform, replacing hours of manual research for the sales team."
+      ]
+    },
+    {
+      "title": "Assistant Lead Software Engineer",
+      "org": "CS 3733 × Hanover Insurance",
+      "place": "Worcester, MA",
+      "dates": "Mar – May 2026",
+      "points": [
+        "Helped lead a 10-person Agile team building a cloud prototype for Hanover Insurance in eight weeks.",
+        "Owned AI content search, bulk CMS uploads, the file viewer and role-based permissions; reviewed PRs and resolved integration bugs."
+      ]
+    },
+    {
+      "title": "IT Intern",
+      "org": "City of Marlborough",
+      "place": "Marlborough, MA",
+      "dates": "Jun – Aug 2025",
+      "points": [
+        "Deployed staff workstations and diagnosed software, hardware and network issues across city departments."
+      ]
+    }
+  ]
+}

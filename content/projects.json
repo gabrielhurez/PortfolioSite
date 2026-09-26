@@ -1,0 +1,182 @@
+{
+  "items": [
+    {
+      "title": "Skapta",
+      "featured": true,
+      "category": "AI tooling",
+      "year": "2026",
+      "blurb": "Describe a project in plain English, get a recommended stack and a ready-to-run codebase.",
+      "summary": "Describe a project in plain English and get a recommended stack plus a downloadable, pre-configured codebase. The retrieval pipeline scrapes real docs, embeds them with sentence-transformers, stores them in Pinecone and reranks results before generating. A labeled 15-case eval set scores the recommendations.",
+      "tags": [
+        "Python",
+        "FastAPI",
+        "React",
+        "LangChain",
+        "Pinecone",
+        "Groq"
+      ],
+      "uses": [
+        "Python",
+        "FastAPI",
+        "React",
+        "LangChain",
+        "Pinecone",
+        "Groq",
+        "RAG pipelines",
+        "Embeddings & vector search",
+        "JavaScript",
+        "HTML/CSS",
+        "LLM APIs"
+      ],
+      "links": [
+        {
+          "label": "GitHub",
+          "href": "https://github.com/gabrielhurez/skapta"
+        }
+      ],
+      "image": "/images/projects/skapta.webp",
+      "imageAlt": "Skapta recommending a stack for a textbook marketplace: Next.js, Node.js with Express, PostgreSQL, Auth0 and Railway, each with a short reason.",
+      "imageLabel": ""
+    },
+    {
+      "title": "Hanover CMS",
+      "featured": true,
+      "category": "Team project",
+      "year": "2026",
+      "blurb": "A cloud prototype for Hanover Insurance, built in eight weeks by a 10-person team where I was assistant lead.",
+      "summary": "A cloud web app prototype built for Hanover Insurance by a 10-person Agile team in eight weeks. As assistant lead I owned AI content search, bulk CMS uploads, the inline file viewer, role-based permissions and review notifications, and reviewed the team's pull requests.",
+      "tags": [
+        "TypeScript",
+        "PERN",
+        "Prisma",
+        "Tailwind",
+        "AWS"
+      ],
+      "uses": [
+        "TypeScript",
+        "React",
+        "Node.js",
+        "Express",
+        "PostgreSQL",
+        "Prisma",
+        "Tailwind",
+        "AWS EC2",
+        "Auth0",
+        "CI/CD",
+        "Git",
+        "HTML/CSS",
+        "Supabase"
+      ],
+      "links": [
+        {
+          "label": "GitHub",
+          "href": "https://github.com/cs3733-amethysAngels/teamA-prototype"
+        }
+      ],
+      "image": "/images/projects/hanover-content-management.png",
+      "imageAlt": "The Content Management page: a searchable list of documents with type, category and status filters, deadlines and overdue flags.",
+      "imageLabel": ""
+    },
+    {
+      "title": "Pi Cluster",
+      "featured": true,
+      "category": "Infrastructure",
+      "year": "2025–",
+      "blurb": "A K3s cluster of Raspberry Pis that self-hosts my services. I'm currently refactoring it to network boot (PXE).",
+      "summary": "A multi-node Raspberry Pi cluster running K3s to orchestrate containerized services. Self-hosts a web server, with WireGuard VPN for remote access. I handle OS updates and node recovery myself.",
+      "tags": [
+        "Linux",
+        "K3s",
+        "Docker",
+        "WireGuard"
+      ],
+      "uses": [
+        "Linux",
+        "Docker",
+        "Kubernetes (K3s)",
+        "WireGuard"
+      ],
+      "links": [],
+      "image": null,
+      "imageAlt": "",
+      "imageLabel": "Photo of the cluster"
+    },
+    {
+      "title": "Vuln Scanner",
+      "featured": true,
+      "category": "Security",
+      "year": "2026",
+      "blurb": "A CLI that probes for exposed endpoints and missing security headers, then writes a report.",
+      "summary": "A CLI that probes sensitive endpoints like /admin, .env and backup files, audits missing HTTP security headers, and writes structured vulnerability reports.",
+      "tags": [
+        "Python",
+        "HTTP",
+        "CLI"
+      ],
+      "uses": [
+        "Python"
+      ],
+      "links": [
+        {
+          "label": "GitHub",
+          "href": "https://github.com/gabrielhurez/vuln-scanner"
+        }
+      ],
+      "image": "/images/projects/vuln-scanner.png",
+      "imageAlt": "VulnScanner in Windows Terminal, scanning a deliberately misconfigured local test site: missing security headers, an exposed .env file with an AWS key and database password, an open directory listing and a SQL dump.",
+      "imageLabel": "Terminal output"
+    },
+    {
+      "title": "This portfolio",
+      "featured": false,
+      "category": "",
+      "year": "2026",
+      "blurb": "This website!",
+      "summary": "",
+      "tags": [
+        "Next.js",
+        "TypeScript",
+        "CSS"
+      ],
+      "uses": [
+        "TypeScript",
+        "React",
+        "HTML/CSS"
+      ],
+      "links": [
+        {
+          "label": "GitHub",
+          "href": "https://github.com/gabrielhurez/PortfolioSite"
+        }
+      ],
+      "image": null,
+      "imageAlt": "",
+      "imageLabel": ""
+    },
+    {
+      "title": "Wildfire Prediction",
+      "featured": false,
+      "category": "Research",
+      "year": "2024",
+      "blurb": "Predicting acres burned by California wildfires from a small dataset.",
+      "summary": "",
+      "tags": [
+        "Python",
+        "XGBoost",
+        "Research"
+      ],
+      "uses": [
+        "Python"
+      ],
+      "links": [
+        {
+          "label": "Paper (PDF)",
+          "href": "/files/wildfire-size-prediction.pdf"
+        }
+      ],
+      "image": null,
+      "imageAlt": "",
+      "imageLabel": ""
+    }
+  ]
+}
