@@ -1,48 +1,64 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
-import Reveal from "./Reveal";
+import { useState } from "react";
+import { projects, skills } from "@/data/site";
+import SectionHeading from "./SectionHeading";
+import styles from "./Skills.module.css";
 
-const quadrants = [
-  { cls: "q0", label: "LANGUAGES",      nodes: ["Python", "TypeScript", "JavaScript", "C/C++", "SQL", "HTML/CSS"] },
-  { cls: "q1", label: "FRAMEWORKS",     nodes: ["React", "Node.js", "Express", "Tailwind CSS", "Prisma ORM", "Auth0"] },
-  { cls: "q2", label: "AI & TOOLS",     nodes: ["Claude Code", "RAG Pipelines", "Pinecone", "ChatGPT", "Groq / Llama"] },
-  { cls: "q3", label: "INFRASTRUCTURE", nodes: ["Docker", "K3s", "Linux", "AWS", "Vercel", "Git", "CI/CD", "Testing", "WireGuard"] },
-];
-
-const container: Variants = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } },
-};
-
-const item: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  show:   { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.25, 0.46, 0.45, 0.94] } },
-};
-
+// Hover (or tap) a skill and the projects that used it light up; the rest fade back
 export default function Skills() {
+  const [active, setActive] = useState<string | null>(null);
+  const using = active ? new Set(projects.filter(p => p.uses.includes(active)).map(p => p.ref)) : null;
+
   return (
-    <section className="section" id="skills">
+    <section className="section" id="skills" aria-labelledby="skills-title">
       <div className="container">
-        <Reveal className="sec-label">TECHNICAL SKILLS</Reveal>
-        <motion.div
-          className="quad"
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.25 }}
-        >
-          {quadrants.map((q) => (
-            <motion.div key={q.cls} className={`quadrant ${q.cls}`} variants={item}>
-              <div className="q-label">{q.label}</div>
-              <div className="q-nodes">
-                {q.nodes.map((n) => (
-                  <span className="q-node" key={n}>{n}</span>
-                ))}
+        <SectionHeading id="skills-title">Skills</SectionHeading>
+
+        <div className={styles.layout} data-filtering={!!active} onMouseLeave={() => setActive(null)}>
+          <div className={styles.groups} data-reveal>
+            {skills.map(({ group, items }) => (
+              <div key={group}>
+                <h3 className={styles.group}>{group}</h3>
+                <ul className={styles.chips}>
+                  {items.map(skill => (
+                    <li key={skill}>
+                      <button
+                        type="button"
+                        className={styles.chip}
+                        aria-pressed={active === skill}
+                        onMouseEnter={() => setActive(skill)}
+                        onFocus={() => setActive(skill)}
+                        onClick={() => setActive(active === skill ? null : skill)}
+                      >
+                        {skill}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
               </div>
-            </motion.div>
-          ))}
-        </motion.div>
+            ))}
+          </div>
+
+          <ol className={styles.work} data-reveal style={{ "--delay": "0.1s" } as React.CSSProperties}>
+            {projects.map(project => (
+              <li key={project.ref} data-on={using?.has(project.ref) ?? false}>
+                <a href={`#work-${project.ref}`}>
+                  <span className="display">{project.title}</span>
+                  <span className={styles.kind}>{project.category}</span>
+                </a>
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        <p className="sr-only" aria-live="polite">
+          {active
+            ? using?.size
+              ? `${active}: used in ${projects.filter(p => using.has(p.ref)).map(p => p.title).join(", ")}`
+              : `${active}: not in a project on this site yet`
+            : ""}
+        </p>
       </div>
     </section>
   );
