@@ -1,0 +1,14 @@
+/* Full-bleed behind the whole hero; the shape's own position decides where it sits */
+.wrap {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  /* Fade out toward the bottom of the hero instead of stopping at a hard edge */
+  mask-image: linear-gradient(to bottom, #000 55%, transparent 96%);
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+
+.wrap[data-shown="true"] {
+  opacity: 1;
+}

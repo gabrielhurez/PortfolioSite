@@ -1,0 +1,69 @@
+.list {
+  display: grid;
+}
+
+.role {
+  display: grid;
+  grid-template-columns: minmax(140px, 0.6fr) minmax(0, 1fr) minmax(0, 1.3fr);
+  gap: clamp(16px, 3vw, 44px);
+  padding-block: clamp(24px, 3.5vw, 40px);
+  border-top: 2px solid var(--trace);
+}
+
+.role:last-child {
+  border-bottom: 2px solid var(--trace);
+}
+
+.when {
+  display: grid;
+  gap: 2px;
+  align-content: start;
+  padding-top: 6px;
+  font-size: 15px;
+  color: var(--muted);
+}
+
+.title {
+  font-size: clamp(30px, 3.4vw, 46px);
+}
+
+.org {
+  margin-top: 8px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.points {
+  display: grid;
+  gap: 12px;
+  padding-top: 4px;
+}
+
+.points li {
+  position: relative;
+  padding-left: 22px;
+}
+
+/* Small trace stub in place of a bullet */
+.points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.8em;
+  width: 12px;
+  height: 2px;
+  background: var(--gold);
+}
+
+@media (max-width: 860px) {
+  .role {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+  .when {
+    grid-auto-flow: column;
+    justify-content: start;
+    gap: 16px;
+    padding-top: 0;
+  }
+}

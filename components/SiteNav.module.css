@@ -1,0 +1,318 @@
+/* ---------- The bar: always pinned, quiet on the hero, soft background once you scroll ---------- */
+.bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  transition:
+    background-color 0.3s,
+    backdrop-filter 0.3s;
+}
+
+.bar[data-docked="true"] {
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(10px);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-block: 24px;
+  transition:
+    padding 0.3s var(--ease-out),
+    margin 0.3s var(--ease-out);
+}
+
+.bar[data-docked="true"] .inner {
+  padding-block: 12px;
+}
+
+/* Gold line along the bottom that fills as you move through the page */
+.progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--gold);
+  transform-origin: left;
+  transform: scaleX(0);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.bar[data-docked="true"] .progress {
+  opacity: 1;
+}
+
+.mark {
+  display: block;
+  flex: none;
+  width: clamp(92px, 9vw, 124px);
+  color: var(--text);
+  text-decoration: none;
+  transition: width 0.3s var(--ease-out);
+}
+
+.bar[data-docked="true"] .mark {
+  width: 82px;
+}
+
+.mark .markSignature {
+  color: var(--text);
+}
+
+/* At logo size the real ink would be hairline-thin, so give it a little extra weight */
+.markSignature :global(.ink) {
+  stroke: currentColor;
+  stroke-width: 10px;
+  stroke-linejoin: round;
+}
+
+/* ---------- Controls: Résumé, theme, Menu. One size and one shape, side by side ---------- */
+/* The sections live in the full-screen menu, so the bar holds just these */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.resume,
+.themeToggle,
+.menuButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 38px;
+  padding: 0 14px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  background: var(--surface);
+  border: 2px solid var(--stroke);
+  border-radius: 6px;
+  cursor: pointer;
+  transition:
+    transform 0.2s var(--ease-out),
+    box-shadow 0.2s var(--ease-out),
+    color 0.2s;
+}
+
+.themeToggle {
+  width: 38px;
+  padding: 0;
+}
+
+.resume:hover,
+.themeToggle:hover,
+.menuButton:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 3px 3px 0 var(--stroke), var(--glow);
+}
+
+.themeToggle svg {
+  transition: transform 0.3s var(--ease-out);
+}
+
+.themeToggle:hover svg {
+  transform: rotate(-18deg);
+}
+
+.menuIcon {
+  display: grid;
+  gap: 4px;
+}
+
+.menuIcon::before,
+.menuIcon::after {
+  content: "";
+  width: 16px;
+  height: 2px;
+  background: currentColor;
+}
+
+/* ---------- Full-screen menu, sweeping open from the Menu button ---------- */
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: flex;
+  align-items: center;
+  background: var(--text);
+  color: var(--bg);
+  clip-path: circle(0 at var(--origin-x, calc(100% - 72px)) var(--origin-y, 36px));
+  visibility: hidden;
+  transition:
+    clip-path 0.7s cubic-bezier(0.7, 0, 0.2, 1),
+    visibility 0s linear 0.7s;
+}
+
+.menu[data-open="true"] {
+  clip-path: circle(150% at var(--origin-x, calc(100% - 72px)) var(--origin-y, 36px));
+  visibility: visible;
+  transition:
+    clip-path 0.7s cubic-bezier(0.7, 0, 0.2, 1),
+    visibility 0s;
+}
+
+.menuInner {
+  display: grid;
+  gap: clamp(32px, 6vh, 64px);
+  width: 100%;
+}
+
+.menuLinks {
+  display: grid;
+  gap: 2px;
+}
+
+.menuLinks li {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.4s,
+    transform 0.5s var(--ease-out);
+}
+
+.menu[data-open="true"] .menuLinks li {
+  opacity: 1;
+  transform: none;
+  transition-delay: calc(0.25s + var(--i) * 0.06s);
+}
+
+.menuLinks a {
+  display: inline-block;
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: clamp(56px, 10vw, 128px);
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--bg);
+  text-decoration: none;
+  transition:
+    color 0.2s,
+    transform 0.3s var(--ease-out);
+}
+
+.menuLinks a:hover,
+.menuLinks a[aria-current] {
+  color: var(--gold);
+  transform: translateX(16px);
+}
+
+.menuFooter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+  font-size: 15px;
+}
+
+.menuFooter a {
+  color: color-mix(in srgb, var(--bg) 75%, transparent);
+  text-decoration: none;
+}
+
+.menuFooter a:hover {
+  color: var(--gold);
+}
+
+/* The editor link sits apart, at the far end of the row */
+.menuFooter .edit {
+  margin-left: auto;
+}
+
+/* Sits exactly where the Menu button is (SiteNav copies its position in) */
+.close {
+  position: absolute;
+  top: var(--close-top, 18px);
+  right: var(--close-right, var(--gutter));
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 38px;
+  min-width: var(--close-width, auto);
+  padding: 0 14px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--bg);
+  background: none;
+  border: 2px solid var(--bg);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* The Menu button's two lines cross into an X */
+.closeIcon {
+  position: relative;
+  width: 16px;
+  height: 10px;
+}
+
+.closeIcon::before,
+.closeIcon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 16px;
+  height: 2px;
+  background: currentColor;
+  rotate: 45deg;
+}
+
+.closeIcon::after {
+  rotate: -45deg;
+}
+
+.menu :focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu,
+  .menu[data-open="true"],
+  .menuLinks li {
+    transition: none;
+  }
+}
+
+/* ---------- Dark mode ---------- */
+/* The menu stays a deep panel instead of inverting to cream */
+:global(:root[data-theme="dark"]) .menu {
+  background: #070b09;
+  color: var(--text);
+}
+
+:global(:root[data-theme="dark"]) .menuLinks a,
+:global(:root[data-theme="dark"]) .close {
+  color: var(--text);
+  border-color: var(--text);
+}
+
+:global(:root[data-theme="dark"]) .menuLinks a:hover,
+:global(:root[data-theme="dark"]) .menuLinks a[aria-current] {
+  color: var(--gold);
+  text-shadow: 0 0 24px color-mix(in srgb, var(--gold) 20%, transparent);
+}
+
+:global(:root[data-theme="dark"]) .menuFooter a {
+  color: var(--muted);
+}
+
+/* A faint glow on the gold progress line and the signature */
+:global(:root[data-theme="dark"]) .progress {
+  box-shadow: 0 0 8px color-mix(in srgb, var(--gold) 38%, transparent);
+}
+
+:global(:root[data-theme="dark"]) .markSignature {
+  filter: drop-shadow(0 0 5px color-mix(in srgb, var(--gold) 18%, transparent));
+}

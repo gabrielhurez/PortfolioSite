@@ -1,0 +1,114 @@
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: clamp(32px, 6vw, 96px);
+  align-items: start;
+}
+
+.groups {
+  display: grid;
+  gap: 24px;
+}
+
+.group {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+/* Same bordered, hard-shadow style as the site's buttons */
+.chip {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 17px;
+  line-height: 1.3;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  padding: 4px 11px;
+  color: var(--text);
+  background: var(--surface);
+  border: 2px solid var(--stroke);
+  border-radius: 5px;
+  cursor: pointer;
+  transition:
+    transform 0.2s var(--ease-out),
+    box-shadow 0.2s var(--ease-out),
+    background-color 0.2s,
+    color 0.2s;
+}
+
+.chip:hover,
+.chip[aria-pressed="true"] {
+  transform: translate(-2px, -2px);
+  box-shadow: 3px 3px 0 var(--stroke), var(--glow);
+  background: var(--accent);
+  color: var(--surface);
+}
+
+.work {
+  position: sticky;
+  top: 24px;
+  border-top: 2px solid var(--trace);
+}
+
+.work li {
+  border-bottom: 2px solid var(--trace);
+  transition:
+    opacity 0.3s,
+    transform 0.35s var(--ease-out);
+}
+
+.work a {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding: 14px 2px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.work a :global(.display) {
+  font-size: clamp(32px, 4vw, 52px);
+  transition: color 0.25s;
+}
+
+.work a:hover :global(.display) {
+  color: var(--accent);
+}
+
+.kind {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* While a skill is active, the projects that used it stay lit and the rest fade back */
+.layout[data-filtering="true"] .work li {
+  opacity: 0.2;
+}
+
+.layout[data-filtering="true"] .work li[data-on="true"] {
+  opacity: 1;
+  transform: translateX(8px);
+}
+
+.layout[data-filtering="true"] .work li[data-on="true"] :global(.display) {
+  color: var(--accent);
+}
+
+
+@media (max-width: 860px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .work {
+    position: static;
+  }
+}

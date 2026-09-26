@@ -1,30 +1,38 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
+import { Big_Shoulders, IBM_Plex_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 
-const spaceGrotesk = Space_Grotesk({
+const display = Big_Shoulders({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["700"],
+  axes: ["opsz"],
 });
 
-const inter = Inter({
+const body = IBM_Plex_Sans({
   variable: "--font-body",
   subsets: ["latin"],
-  weight: ["300", "400"],
+  weight: ["400", "500", "600"],
 });
 
-const jetbrainsMono = JetBrains_Mono({
+const mono = JetBrains_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
-  weight: ["400"],
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
-  title: "Gabriel Hurez-Soler | Software Engineer",
+  title: "Gabriel Hurez-Soler",
   description:
-    "CS student at WPI building AI-powered tools, full-stack apps, and home lab infrastructure.",
+    "Junior studying computer science at WPI, looking for software engineering internships for summer 2027.",
+  // The preview image itself is app/opengraph-image.png
+  openGraph: {
+    title: "Gabriel Hurez-Soler, Software Engineer",
+    description:
+      "Junior studying computer science at WPI, looking for software engineering internships for summer 2027.",
+    type: "website",
+  },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({
@@ -33,10 +41,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}
-    >
+    <html lang="en" className={`${display.variable} ${body.variable} ${mono.variable}`} suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{var t=localStorage.getItem("theme");if(t!=="light"&&t!=="dark")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.dataset.theme=t}catch(e){}`,
+          }}
+        />
+      </head>
       <body>
         <SmoothScroll />
         {children}

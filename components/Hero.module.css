@@ -1,0 +1,95 @@
+.hero {
+  position: relative;
+  padding-top: 88px; /* room for the fixed navbar */
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+.body {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding-bottom: clamp(64px, 10vh, 120px);
+}
+
+.text {
+  width: min(100%, 1180px);
+  margin-left: clamp(0px, 6vw, 120px);
+}
+
+.intro {
+  font-size: clamp(17px, 1.5vw, 20px);
+  margin-bottom: clamp(16px, 3vw, 30px);
+}
+
+.intro strong {
+  font-weight: 600;
+}
+
+.title {
+  font-size: clamp(56px, 9vw, 150px);
+}
+
+.sub {
+  font-size: clamp(18px, 1.7vw, 24px);
+  max-width: 38ch;
+  margin-top: clamp(18px, 3vw, 32px);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: clamp(20px, 3vw, 32px);
+}
+
+/* Line rise: the line is a masked strip; its content slides up into view */
+.line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.06em;
+}
+
+.rise {
+  display: inline-block;
+  animation: rise 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: var(--d, 0ms);
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(105%);
+  }
+  to {
+    transform: none;
+  }
+}
+
+.fade {
+  animation: fadeUp 0.8s ease both;
+  animation-delay: var(--d, 0ms);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 800px) {
+  .body {
+    align-items: flex-start;
+    padding-top: 10vh;
+  }
+  .text {
+    margin-left: 0;
+  }
+}

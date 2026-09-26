@@ -1,0 +1,45 @@
+.email {
+  display: inline-block;
+  font-size: clamp(40px, 8.5vw, 128px);
+  text-transform: none;
+  color: var(--text);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+  background: linear-gradient(var(--gold), var(--gold)) left 88% / 0 0.12em no-repeat;
+  transition: background-size 0.45s var(--ease-out), color 0.25s;
+}
+
+.email:hover {
+  color: var(--accent);
+  background-size: 100% 0.12em;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: clamp(28px, 4vw, 48px);
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-block: 28px 36px;
+  border-top: 2px solid var(--trace);
+  font-size: 15px;
+  color: var(--muted);
+}
+
+.footer a {
+  color: var(--muted);
+  /* A comfortable tap target on phones without shifting the footer's layout */
+  display: inline-block;
+  padding: 10px 0;
+  margin: -10px 0;
+}
+
+.footer a:hover {
+  color: var(--accent);
+}

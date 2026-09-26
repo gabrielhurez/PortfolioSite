@@ -1,0 +1,92 @@
+.more {
+  padding-block: clamp(24px, 4vw, 48px) var(--section-y);
+}
+
+.title {
+  font-size: clamp(36px, 4.4vw, 60px);
+  margin-bottom: 24px;
+}
+
+.list {
+  border-top: 2px solid var(--trace);
+}
+
+.list li {
+  border-bottom: 2px solid var(--trace);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr) minmax(0, 1.4fr) minmax(0, 0.9fr) 28px;
+  align-items: baseline;
+  gap: 20px;
+  padding: 16px 12px;
+  color: var(--text);
+  text-decoration: none;
+  border-radius: 8px;
+  transition:
+    background-color 0.25s,
+    box-shadow 0.25s;
+}
+
+a.row:hover {
+  background: var(--surface);
+  box-shadow: var(--glow);
+}
+
+a.row:hover .name {
+  color: var(--accent);
+}
+
+a.row:hover .arrow {
+  transform: translate(3px, -3px);
+  color: var(--accent);
+}
+
+.year {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.name {
+  font-size: clamp(26px, 2.6vw, 34px);
+  transition: color 0.2s;
+}
+
+.summary {
+  line-height: 1.5;
+}
+
+.tags {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.arrow {
+  align-self: center;
+  transition:
+    transform 0.25s var(--ease-out),
+    color 0.2s;
+}
+
+@media (max-width: 860px) {
+  .row {
+    grid-template-columns: minmax(0, 1fr) 28px;
+    gap: 6px 12px;
+  }
+  .year {
+    order: -1;
+    grid-column: 1 / -1;
+  }
+  .summary,
+  .tags {
+    grid-column: 1 / 2;
+  }
+  .summary:empty {
+    display: none;
+  }
+  .arrow {
+    grid-column: 2;
+    grid-row: 2;
+  }
+}

@@ -1,0 +1,20 @@
+.signature {
+  color: var(--accent);
+  pointer-events: none;
+}
+
+.signature:empty {
+  display: none;
+}
+
+.signature :global(svg) {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+/* The real ink outline, in the site's ink colour */
+.signature :global(.ink) {
+  fill: currentColor;
+}

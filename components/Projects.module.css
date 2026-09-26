@@ -1,0 +1,87 @@
+.project {
+  min-height: 90svh;
+  display: flex;
+  align-items: center;
+  padding-block: clamp(64px, 10vw, 120px);
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(32px, 6vw, 96px);
+  align-items: center;
+}
+
+/* Alternate sections put the preview on the left */
+.project[data-alternate="true"] .details {
+  order: 2;
+}
+
+.details {
+  display: grid;
+  gap: 24px;
+  justify-items: start;
+}
+
+/* Rule that draws itself when the section comes into view */
+.divider {
+  width: 100%;
+  max-width: 280px;
+  height: 2px;
+  background: var(--accent);
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 1s var(--ease-out) 0.3s;
+}
+
+:global(html:not(.reveal-ready)) .divider,
+.details[data-visible="true"] .divider {
+  transform: scaleX(1);
+}
+
+.title {
+  font-size: clamp(48px, 5.6vw, 92px);
+}
+
+.blurb {
+  font-size: clamp(18px, 1.5vw, 21px);
+  line-height: 1.5;
+  max-width: 30ch;
+}
+
+.shot {
+  display: block;
+  width: 100%;
+  /* Real screenshots keep their own shape, so nothing gets cropped off */
+  height: auto;
+  border: 2px solid var(--stroke);
+  border-radius: 10px;
+  box-shadow: 10px 10px 0 var(--stroke), var(--glow);
+}
+
+.placeholder {
+  aspect-ratio: 16 / 10;
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--muted);
+  background:
+    repeating-linear-gradient(135deg, transparent 0 12px, var(--hairline) 12px 13px),
+    var(--surface);
+}
+
+@media (max-width: 900px) {
+  .project {
+    min-height: 0;
+  }
+  .inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .project[data-alternate="true"] .details {
+    order: 0;
+  }
+  .preview {
+    order: -1;
+  }
+}

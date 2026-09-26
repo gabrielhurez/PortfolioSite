@@ -1,19 +1,25 @@
 import Hero from "@/components/Hero";
 import Projects from "@/components/Projects";
-import Skills from "@/components/Skills";
+import Experience from "@/components/Experience";
 import About from "@/components/About";
-import Footer from "@/components/Footer";
-import BackToTop from "@/components/BackToTop";
+import Skills from "@/components/Skills";
+import Contact from "@/components/Contact";
+import RevealOnScroll from "@/components/RevealOnScroll";
+import SiteNav from "@/components/SiteNav";
 
 export default function Home() {
   return (
-    <main style={{ background: "#0a0a0a" }}>
+    <>
+      <SiteNav />
       <Hero />
-      <Projects />
-      <Skills />
-      <About />
-      <Footer />
-      <BackToTop />
-    </main>
+      <main>
+        <Projects />
+        <Experience />
+        <Skills />
+        <About />
+        <Contact />
+      </main>
+      <RevealOnScroll />
+    </>
   );
 }
