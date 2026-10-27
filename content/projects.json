@@ -86,9 +86,9 @@
       "summary": "A multi-node Raspberry Pi cluster running K3s to orchestrate containerized services. Self-hosts a web server, with WireGuard VPN for remote access. I handle OS updates and node recovery myself.",
       "tags": [
         "Linux",
-        "K3s",
-        "Docker",
-        "WireGuard"
+        "Bash",
+        "Networking",
+        "Docker"
       ],
       "uses": [
         "Linux",
@@ -125,6 +125,31 @@
       "image": "/images/projects/vuln-scanner.png",
       "imageAlt": "VulnScanner in Windows Terminal, scanning a deliberately misconfigured local test site: missing security headers, an exposed .env file with an AWS key and database password, an open directory listing and a SQL dump.",
       "imageLabel": "Terminal output"
+    },
+    {
+      "title": "Health Risk Prediction",
+      "featured": false,
+      "category": "Machine learning",
+      "year": "2026",
+      "blurb": "Team project predicting risk of 10 chronic health conditions from CDC survey data. I built the calibrated models behind it.",
+      "summary": "",
+      "tags": [
+        "Python",
+        "scikit-learn",
+        "MLflow"
+      ],
+      "uses": [
+        "Python"
+      ],
+      "links": [
+        {
+          "label": "GitHub",
+          "href": "https://github.com/gabrielhurez/MLProject"
+        }
+      ],
+      "image": null,
+      "imageAlt": "",
+      "imageLabel": ""
     },
     {
       "title": "This portfolio",
