@@ -28,7 +28,9 @@
   gap: 12px;
   padding-block: 28px 36px;
   border-top: 2px solid var(--trace);
-  font-size: 15px;
+  font-family: var(--font-serif), Georgia, serif;
+  font-style: italic;
+  font-size: 19px;
   color: var(--muted);
 }
 
