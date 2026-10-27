@@ -131,7 +131,7 @@
       "featured": false,
       "category": "Machine learning",
       "year": "2026",
-      "blurb": "Team project predicting risk of 10 chronic health conditions from CDC survey data. I built the calibrated models behind it.",
+      "blurb": "Worked on the modeling in a group predicting the risk of 10 chronic health conditions from CDC survey data.",
       "summary": "",
       "tags": [
         "Python",
